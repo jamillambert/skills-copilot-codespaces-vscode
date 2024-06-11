@@ -1,6 +1,5 @@
 {
-    // Name this configuration
-    "name": "Codespace for Skills!",
+    "name": "Codespace for copilot",
     "customizations": {
         "vscode": {
             "extensions": [
