@@ -154,3 +154,5 @@ function test() {
     result = calculateCylinderArea(5, 10);
     console.log(result === 471.23889803846896 ? 'Test passed' : 'Test failed');
 }
+
+//Copilot doesn't work on mobile
