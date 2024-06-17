@@ -3,14 +3,66 @@
 <head>
     <title>My Copilot Website</title>
     <style>
+        body {
+            background-image: url("background.jpg");
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
         .page {
             display: none;
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        p {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #navigation {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        #home, #about, #contact {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #result, #areaResult {
+            margin-top: 20px;
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
     <h1>Welcome to My Copilot Generated Website</h1>
-    <p>This is a basic HTML website.</p>
+    <p>This is a modern and professional HTML website.</p>
     <div id="navigation">
         <button onclick="showPage('home')">Home</button>
         <button onclick="showPage('about')">About</button>
@@ -26,10 +78,10 @@
         <script src="skills.js"></script>
         <script>
             function calculatenumbers() {
-            var num1 = document.getElementById("num1").value;
-            var num2 = document.getElementById("num2").value;
-            var result = parseInt(num1) + parseInt(num2);
-            document.getElementById("result").innerHTML = "The result is: " + result;
+                var num1 = document.getElementById("num1").value;
+                var num2 = document.getElementById("num2").value;
+                var result = parseInt(num1) + parseInt(num2);
+                document.getElementById("result").innerHTML = "The result is: " + result;
             }
         </script>
         <div id="area" class="page">
