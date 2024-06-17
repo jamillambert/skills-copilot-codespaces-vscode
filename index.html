@@ -4,7 +4,7 @@
     <title>My Copilot Website</title>
     <style>
         body {
-            background-image: url("background.jpg");
+            background-image: url("https://th.bing.com/th/id/R.2e2ebc1459e983f56a4d1b81a0c748ca?rik=oGjgxEsC6ULLYA&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2fc%2f4%2f0%2f862120-wallpaper-desktop-winter-scenes-2880x1800-laptop.jpg&ehk=c33qk2lej5yYUZwHjE4ZjLFtEDKsBpmURYtaKJFhrNA%3d&risl=&pid=ImgRaw&r=0");
             background-size: cover;
             color: white;
             font-family: Arial, sans-serif;
@@ -84,13 +84,12 @@
                 document.getElementById("result").innerHTML = "The result is: " + result;
             }
         </script>
-        <div id="area" class="page">
-            <h2>Area Page</h2>
-            <p>Calculate the area of a circle.</p>
-            <input type="number" id="radius" placeholder="Enter the radius">
-            <button onclick="calculateArea()">Calculate</button>
-            <div id="areaResult"></div>
-        </div>
+        <div id="area"></div>
+        <h2>Area Calculation</h2>
+        <p>Calculate the area of a circle.</p>
+        <input type="number" id="radius" placeholder="Enter the radius">
+        <button onclick="calculateArea()">Calculate</button>
+        <div id="areaResult"></div>
         <script>
             function calculateArea() {
                 var radius = document.getElementById("radius").value;
