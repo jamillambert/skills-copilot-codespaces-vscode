@@ -11,6 +11,60 @@
 <body>
     <h1>Welcome to My Copilot Generated Website</h1>
     <p>This is a basic HTML website.</p>
+    <div id="navigation">
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('about')">About</button>
+        <button onclick="showPage('contact')">Contact</button>
+    </div>
+    <div id="home" class="page">
+        <h2>Home Page</h2>
+        <p>This is the home page content.</p>
+        <input type="text" id="textInput" placeholder="Enter text">
+        <input type="number" id="num1" placeholder="Enter number 1">
+        <input type="number" id="num2" placeholder="Enter number 2">
+        <button onclick="calculatenumbers()">Calculate</button>
+        <div id="result"></div>
+        <script src="skills.js"></script>
+        <script>
+            function calculatenumbers() {
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+            var result = parseInt(num1) + parseInt(num2);
+            document.getElementById("result").innerHTML = "The result is: " + result;
+            }
+        </script>
+    </div>
+    <div id="about" class="page">
+        <h2>About Page</h2>
+        <p>This is the about page content.</p>
+    </div>
+    <div id="contact" class="page">
+        <h2>Contact Page</h2>
+        <p>This is the contact page content.</p>
+    </div>
+    <script>
+        function showPage(pageId) {
+            var pages = document.getElementsByClassName("page");
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].style.display = "none";
+            }
+            document.getElementById(pageId).style.display = "block";
+        }
+    </script>
+</body>
+</html>
+<html>
+<head>
+    <title>My Copilot Website</title>
+    <style>
+        .page {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Copilot Generated Website</h1>
+    <p>This is a basic HTML website.</p>
 
     <div id="navigation">
         <button onclick="showPage('home')">Home</button>
@@ -21,6 +75,10 @@
     <div id="home" class="page">
         <h2>Home Page</h2>
         <p>This is the home page content.</p>
+        <input type="number" id="num1" placeholder="Enter number 1">
+        <input type="number" id="num2" placeholder="Enter number 2">
+        <button onclick="calculatenumbers()">Calculate</button>
+        <div id="result"></div>
         <script src="skills.js"></script>
         <script>
             function calculatenumbers() {
@@ -30,10 +88,6 @@
             document.getElementById("result").innerHTML = "The result is: " + result;
             }
         </script>
-        <input type="number" id="num1" placeholder="Enter number 1">
-        <input type="number" id="num2" placeholder="Enter number 2">
-        <button onclick="calculatenumbers()">Calculate</button>
-        <div id="result"></div>
         </script>
     </div>
     </div>
