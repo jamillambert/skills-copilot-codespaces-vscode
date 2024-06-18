@@ -85,9 +85,9 @@
         <script src="skills.js"></script>
         <script>
             function calculatenumbers() {
-                var num1 = document.getElementById("num1").value;
-                var num2 = document.getElementById("num2").value;
-                var result = parseInt(num1) + parseInt(num2);
+                var num1 = parseFloat(document.getElementById("num1").value);
+                var num2 = parseFloat(document.getElementById("num2").value);
+                var result = num1 + num2;
                 document.getElementById("result").innerHTML = "The result is: " + result;
             }
         </script>
@@ -101,7 +101,7 @@
             function calculateArea() {
                 var radius = document.getElementById("radius").value;
                 var area = Math.PI * Math.pow(radius, 2);
-                document.getElementById("areaResult").innerHTML = "The area is: " + area.toFixed(2);
+                document.getElementById("areaResult").innerHTML = "The area is: " + area;
             }
         </script>
     </div>
