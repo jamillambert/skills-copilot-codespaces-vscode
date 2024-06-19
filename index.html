@@ -39,7 +39,7 @@
         }
 
         #calculation,
-        #about,
+        #games,
         #contact {
             margin-top: 50px;
             padding: 20px;
@@ -71,7 +71,7 @@
     <p>This is an AI generated website.</p>
     <div id="navigation">
         <button onclick="showPage('calculation')">Calculation</button>
-        <button onclick="showPage('about')">About</button>
+        <button onclick="showPage('games')">Games</button>
         <button onclick="showPage('contact')">Contact</button>
     </div>
     <div id="calculation" class="page">
@@ -105,15 +105,18 @@
             }
         </script>
     </div>
-    <div id="about" class="page">
-        <h2 style="text-align: left; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">About Page</h2>
-        <p style="text-align: left; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">An AI generated webpage using github
+    <div id="games" class="page">
+        <h2 style="text-align: left; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Game Page</h2>
+        <p style="text-align: left; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">An AI generated snake game
             copilot.</p>
         <canvas id="snakeCanvas" width="400" height="400"></canvas>
         <script>
             // Snake game code goes here
             const canvas = document.getElementById("snakeCanvas");
             const ctx = canvas.getContext("2d");
+
+            // Set canvas border
+            canvas.style.border = "1px solid black";
 
             // Snake initial position and size
             let snake = [
@@ -126,11 +129,16 @@
             let dx = 10;
             let dy = 0;
 
+            // Dot position
+            let dot = { x: 0, y: 0 };
+
             // Game loop
             function gameLoop() {
                 clearCanvas();
                 moveSnake();
+                checkCollision();
                 drawSnake();
+                drawDot();
                 setTimeout(gameLoop, 100);
             }
 
@@ -143,7 +151,23 @@
             function moveSnake() {
                 const head = { x: snake[0].x + dx, y: snake[0].y + dy };
                 snake.unshift(head);
-                snake.pop();
+                if (!checkCollision()) {
+                    snake.pop();
+                }
+                checkBoundary();
+            }
+
+            // Check if snake goes off the boundary
+            function checkBoundary() {
+                if (snake[0].x < 0) {
+                    snake[0].x = canvas.width - 10;
+                } else if (snake[0].x >= canvas.width) {
+                    snake[0].x = 0;
+                } else if (snake[0].y < 0) {
+                    snake[0].y = canvas.height - 10;
+                } else if (snake[0].y >= canvas.height) {
+                    snake[0].y = 0;
+                }
             }
 
             // Draw the snake
@@ -152,6 +176,29 @@
                     ctx.fillStyle = "green";
                     ctx.fillRect(segment.x, segment.y, 10, 10);
                 });
+            }
+
+            // Generate a random dot position
+            function generateDot() {
+                const dotX = Math.floor(Math.random() * (canvas.width / 10)) * 10;
+                const dotY = Math.floor(Math.random() * (canvas.height / 10)) * 10;
+                dot = { x: dotX, y: dotY };
+            }
+
+            // Draw the dot
+            function drawDot() {
+                ctx.fillStyle = "red";
+                ctx.fillRect(dot.x, dot.y, 10, 10);
+            }
+
+            // Check collision with the dot
+            function checkCollision() {
+                if (snake[0].x === dot.x && snake[0].y === dot.y) {
+                    snake.push({});
+                    generateDot();
+                    return true;
+                }
+                return false;
             }
 
             // Handle keyboard input
@@ -192,7 +239,10 @@
             }
 
             // Start the game loop
+            generateDot();
             gameLoop();
+        </script>
+        </script>
         </script>
     </div>
     <div id="contact" class="page">
