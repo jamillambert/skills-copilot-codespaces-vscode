@@ -133,6 +133,7 @@
 
             // Score
             let score = 0;
+            let highScore = 0;
 
             // Game loop
             function gameLoop() {
@@ -143,6 +144,7 @@
                 drawSnake();
                 drawDot();
                 drawScore();
+                drawHighScore();
                 setTimeout(gameLoop, 100);
             }
 
@@ -201,6 +203,11 @@
                 ctx.font = "20px Arial";
                 ctx.fillText("Score: " + score, 10, 30);
             }
+            function drawHighScore() {
+                ctx.fillStyle = "white";
+                ctx.font = "20px Arial";
+                ctx.fillText("High Score: " + highScore, 200, 30);
+            }
 
             // Check collision with the dot
             function checkCollision() {
@@ -224,6 +231,9 @@
                         ];
                         dx = 10;
                         dy = 0;
+                        if (score > highScore) {
+                            highScore = score;
+                        }
                         score = 0;
                         generateDot();
                         moveSnake();
