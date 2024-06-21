@@ -264,21 +264,25 @@
                 const goingRight = dx === 10;
 
                 if (keyPressed === LEFT_KEY && !goingRight) {
+                    event.preventDefault(); // Prevent default behavior of the up arrow key
                     dx = -10;
                     dy = 0;
                 }
 
                 if (keyPressed === UP_KEY && !goingDown) {
+                    event.preventDefault(); // Prevent default behavior of the up arrow key
                     dx = 0;
                     dy = -10;
                 }
 
                 if (keyPressed === RIGHT_KEY && !goingLeft) {
+                    event.preventDefault(); // Prevent default behavior of the up arrow key
                     dx = 10;
                     dy = 0;
                 }
 
                 if (keyPressed === DOWN_KEY && !goingUp) {
+                    event.preventDefault(); // Prevent default behavior of the up arrow key
                     dx = 0;
                     dy = 10;
                 }
