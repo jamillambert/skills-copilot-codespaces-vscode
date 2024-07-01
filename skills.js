@@ -7,9 +7,11 @@ function calculateNumbers(var1, var2) {
 
 
 // A function that calculates the area of a circle
-function calculateArea(radius) {
+function calculateCircleArea(radius) {
     return Math.PI * radius * radius;
 }
+
+// Below this point everything, including the comment was from copilot.  I just added the comment mark then filled in whatever copilot wanted.
 
 // A function that calculates the area of a rectangle
 function calculateRectangleArea(width, height) {
@@ -106,7 +108,9 @@ function calculatePrismArea(base, height) {
     return 2 * base + base * height;
 }
 
-// Tests for all of the functions and compares to the know value.  Outputs to the terminal the result of the test.
+
+// The below Test comment was written by me, the code was completely by copilot.
+// Tests for all of the functions, comparing the function result to the known correct value.  Outputs to the terminal the result of the test.
 function test() {
     let result = calculateNumbers(2, 3);
     console.log(result === 5 ? 'Test passed' : 'Test failed');
