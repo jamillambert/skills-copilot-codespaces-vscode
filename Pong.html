@@ -120,6 +120,7 @@
             height: paddleHeight,
             color: "#70c5ce",
             dy: 0,
+            score: 0,
         };
 
         const player2 = {
@@ -129,6 +130,7 @@
             height: paddleHeight,
             color: "#70c5ce",
             dy: 0,
+            score: 0,
         };
 
         // Update the canvas
@@ -137,16 +139,34 @@
             context.clearRect(0, 0, canvas.width, canvas.height);
             // Draw the paddles
             drawPaddles();
-            drawy();
+            drawScore();
             // Draw the ball
             drawBall(ball.x, ball.y, ball.radius, ball.color);
             // Move the ball
-            ball.x += ball.dx;
-            ball.y += ball.dy;
+            ball.x += ball.dx * ball.speed;
+            ball.y += ball.dy * ball.speed;
             // Detect collision with the canvas edges
             if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
                 ball.dy *= -1;
             }
+            // Detect if the ball goes out of bounds on the righthand side and reset the ball
+            if (ball.x - ball.radius < 0) {
+                ball.x = canvas.width / 2;
+                ball.y = canvas.height / 2;
+                ball.dx *= -1;
+                ball.speed = 1;
+                //Add a point to player 2
+                player2.score++;
+            }
+            if (ball.x + ball.radius > canvas.width) {
+                ball.x = canvas.width / 2;
+                ball.y = canvas.height / 2;
+                ball.dx *= -1;
+                ball.speed = 1;
+                //Add a point to player 1
+                player1.score++;
+            }
+
             // Detect collision with the paddles
             if (
                 ball.x - ball.radius < player1.x + player1.width &&
@@ -156,6 +176,8 @@
                 ball.dx *= -1;
                 // Change the angle of the ball depending on where it hits the paddle
                 ball.dy = (ball.y - player1.y - player1.height / 2) / 10;
+                // Increase the speed of the ball
+                ball.speed += 0.1;
             }
             if (
                 ball.x + ball.radius > player2.x &&
@@ -165,6 +187,8 @@
                 ball.dx *= -1;
                 // Change the angle of the ball depending on where it hits the paddle
                 ball.dy = (ball.y - player2.y - player2.height / 2) / 10;
+                // Increase the speed of the ball
+                ball.speed += 0.1;
             }
             // Request animation frame
             requestAnimationFrame(update);
@@ -179,10 +203,10 @@
         }
 
         // Draw the score
-        function drawy() {
+        function drawScore() {
             context.fillStyle = "white";
             context.font = "20px Arial";
-            context.fillText("Player1 y: " + player1.y, 10, 30);
+            context.fillText("SCORE  Player 1: " + player1.score + "  Player 2: " + player2.score, 100, 30);
         }
 
         // Keyboard event listeners
