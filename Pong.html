@@ -153,7 +153,7 @@
                 ball.dy *= -1;
             }
             // Detect if the ball goes out of bounds on the righthand side and reset the ball
-            if (ball.x - ball.radius < 0) {
+            if (ball.x - ball.radius < -100) {
                 ball.x = canvas.width / 2;
                 ball.y = canvas.height / 2;
                 ball.dx *= -1;
@@ -161,7 +161,7 @@
                 //Add a point to player 2
                 player2.score++;
             }
-            if (ball.x + ball.radius > canvas.width) {
+            if (ball.x + ball.radius > (canvas.width + 100)) {
                 ball.x = canvas.width / 2;
                 ball.y = canvas.height / 2;
                 ball.dx *= -1;
@@ -180,7 +180,7 @@
                 // Change the angle of the ball depending on where it hits the paddle
                 ball.dy = (ball.y - player1.y - player1.height / 2) / 10;
                 // Increase the speed of the ball
-                ball.speed += 0.1;
+                ball.speed += 0.5;
             }
             if (
                 ball.x + ball.radius > player2.x &&
@@ -191,7 +191,7 @@
                 // Change the angle of the ball depending on where it hits the paddle
                 ball.dy = (ball.y - player2.y - player2.height / 2) / 10;
                 // Increase the speed of the ball
-                ball.speed += 0.1;
+                ball.speed += 0.5;
             }
             // Request animation frame
             requestAnimationFrame(update);
