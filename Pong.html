@@ -74,6 +74,9 @@
         <button onclick="window.location.href = 'Snake.html'">Snake</button>
         <button onclick="window.location.href = 'Contact.html'">Contact</button>
     </div>
+    <h2 style="text-align: left; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Pong</h2>
+    <p style="text-align: left; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">An pong game generated with the help of
+        AI.<br>Player 1 A is up Z is down.<br>Player 2 use arrow keys.</p>
     <canvas id="pong" width="800" height="400"></canvas>
 
     <script>
@@ -206,7 +209,7 @@
         function drawScore() {
             context.fillStyle = "white";
             context.font = "20px Arial";
-            context.fillText("SCORE  Player 1: " + player1.score + "  Player 2: " + player2.score, 100, 30);
+            context.fillText("SCORE  Player 1: " + player1.score + "  Player 2: " + player2.score, 200, 30);
         }
 
         // Keyboard event listeners
@@ -218,22 +221,22 @@
             delete keysPressed[event.key];
         });
         function handleKeyPress() {
-            if (keysPressed["ArrowUp"]) {
+            if (keysPressed["a"]) {
                 if (player1.y > 0) {
                     player1.y -= 5;
                 }
             }
-            if (keysPressed["ArrowDown"]) {
+            if (keysPressed["z"]) {
                 if (player1.y < canvas.height - player1.height) {
                     player1.y += 5;
                 }
             }
-            if (keysPressed["a"]) {
+            if (keysPressed["ArrowUp"]) {
                 if (player2.y > 0) {
                     player2.y -= 5;
                 }
             }
-            if (keysPressed["z"]) {
+            if (keysPressed["ArrowDown"]) {
                 if (player2.y < canvas.height - player2.height) {
                     player2.y += 5;
                 }
