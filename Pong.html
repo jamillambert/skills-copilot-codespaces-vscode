@@ -180,7 +180,7 @@
                 // Change the angle of the ball depending on where it hits the paddle
                 ball.dy = (ball.y - player1.y - player1.height / 2) / 10;
                 // Increase the speed of the ball
-                ball.speed += 0.5;
+                ball.speed += 0.2;
             }
             if (
                 ball.x + ball.radius > player2.x &&
@@ -191,7 +191,7 @@
                 // Change the angle of the ball depending on where it hits the paddle
                 ball.dy = (ball.y - player2.y - player2.height / 2) / 10;
                 // Increase the speed of the ball
-                ball.speed += 0.5;
+                ball.speed += 0.2;
             }
             // Request animation frame
             requestAnimationFrame(update);
