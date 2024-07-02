@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Copilot Website</title>
+    <style>
+        body {
+            background-image: url("https://i.natgeofe.com/n/cfa19a0d-eff0-4628-8fdd-2ad8d66845dd/mountain-range-appenzell-switzerland.jpg?w=2560&h=1706");
+            background-size: cover;
+            color: rgb(255, 255, 255);
+            font-family: Arial, sans-serif;
+        }
+
+        .page {
+            display: none;
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        p {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #navigation {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        #pong,
+        #snake,
+        #contact {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #result,
+        #areaResult {
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to My Copilot Generated Website</h1>
+    <p>This is an AI generated website.</p>
+    <div id="navigation">
+        <button onclick="window.location.href = 'Pong.html'">Pong</button>
+        <button onclick="window.location.href = 'Snake.html'">Snake</button>
+        <button onclick="window.location.href = 'Contact.html'">Contact</button>
+    </div>
+    <canvas id="pong" width="800" height="400"></canvas>
+
+    <script>
+        // Add your JavaScript code here
+        // Pong game code
+
+        // Get the canvas element
+        const canvas = document.getElementById("pong");
+        const context = canvas.getContext("2d");
+
+        // Create the pong paddle
+        const paddleWidth = 10;
+        const paddleHeight = 100;
+        const player = {
+            x: 0,
+            y: canvas.height / 2 - paddleHeight / 2,
+            width: paddleWidth,
+            height: paddleHeight,
+            color: "#70c5ce",
+            dy: 8,
+        };
+
+        // Create the pong ball
+        const ball = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            radius: 10,
+            speed: 4,
+            dx: 4,
+            dy: 4,
+            color: "#70c5ce",
+        };
+
+        // Draw the paddle
+        function drawPaddle(x, y, width, height, color) {
+            context.fillStyle = color;
+            context.fillRect(x, y, width, height);
+        }
+
+        // Draw the ball
+        function drawBall(x, y, radius, color) {
+            context.fillStyle = color;
+            context.beginPath();
+            context.arc(x, y, radius, 0, Math.PI * 2, false);
+            context.closePath();
+            context.fill();
+        }
+
+        // Update the canvas
+        function update() {
+            // Clear the canvas
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the paddle
+            drawPaddle(player.x, player.y, player.width, player.height, player.color);
+
+            // Draw the ball
+            drawBall(ball.x, ball.y, ball.radius, ball.color);
+
+            // Move the paddle
+            player.y += player.dy;
+
+            // Move the ball
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+
+            // Detect collision with the canvas edges
+            if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
+                ball.dy *= -1;
+            }
+
+            // Detect collision with the paddle
+            if (
+                ball.x - ball.radius < player.x + player.width &&
+                ball.y + ball.radius > player.y &&
+                ball.y - ball.radius < player.y + player.height
+            ) {
+                ball.dx *= -1;
+            }
+
+            // Request animation frame
+            requestAnimationFrame(update);
+        }
+
+        // Keyboard event listeners
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "ArrowUp") {
+                player.dy = -player.speed;
+            } else if (event.key === "ArrowDown") {
+                player.dy = player.speed;
+            }
+        });
+
+        document.addEventListener("keyup", function (event) {
+            if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+                player.dy = 0;
+            }
+        });
+
+        // Start the game
+        update();
+    </script>
+</body>
+
+</html>
