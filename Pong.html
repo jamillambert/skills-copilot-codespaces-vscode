@@ -154,6 +154,8 @@
                 ball.y - ball.radius < player1.y + player1.height
             ) {
                 ball.dx *= -1;
+                // Change the angle of the ball depending on where it hits the paddle
+                ball.dy = (ball.y - player1.y - player1.height / 2) / 10;
             }
             if (
                 ball.x + ball.radius > player2.x &&
@@ -161,6 +163,8 @@
                 ball.y - ball.radius < player2.y + player2.height
             ) {
                 ball.dx *= -1;
+                // Change the angle of the ball depending on where it hits the paddle
+                ball.dy = (ball.y - player2.y - player2.height / 2) / 10;
             }
             // Request animation frame
             requestAnimationFrame(update);
