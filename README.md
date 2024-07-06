@@ -1,5 +1,4 @@
+# A GitHub copilot testing repository
 A collection of copilot created files.  The html files are functional and created by guiding copilot, this often took a number of attempts for it to do it correctly.
 
-Initially done as an introduction to github copilot but then extended.
-
-The webpage was also initially done with copilot but then extended past what it was able to do by itself.
+The webpage was initially done with copilot but then extended past what it was able to do by itself, the intention was to edit the prompts and comments to get copilot to fix its own errors rather than fix them myself.  The major exception to this is removing duplicate code.  Copilot currently has the tendency to rewrite a whole section of code rather than the missing bit, resulting in large sections of duplicated code, and a net result of non functional code that has to be manually edited.
