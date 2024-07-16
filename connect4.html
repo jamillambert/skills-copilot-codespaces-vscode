@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Copilot Website</title>
+    <style>
+        body {
+            background-image: url("https://i.natgeofe.com/n/cfa19a0d-eff0-4628-8fdd-2ad8d66845dd/mountain-range-appenzell-switzerland.jpg?w=2560&h=1706");
+            background-size: cover;
+            color: rgb(255, 255, 255);
+            font-family: Arial, sans-serif;
+        }
+
+        .page {
+            display: none;
+        }
+
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        p {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #navigation {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        #pong,
+        #snake,
+        #contact {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #result,
+        #areaResult {
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 18px;
+        }
+        /* Add your CSS styles here */
+        #board {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            gap: 10px;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+
+        #board div {
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Connect 4</h1>
+    <p>This is an AI generated website.</p>
+    <div id="navigation">
+        <button onclick="window.location.href = 'Pong.html'">Pong</button>
+        <button onclick="window.location.href = 'Snake.html'">Snake</button>
+        <button onclick="window.location.href = 'Connect4.html'">Connect4</button>
+        <button onclick="window.location.href = 'Contact.html'">Contact</button>
+    </div>
+    <h2 style="text-align: left; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Connect 4</h2>
+    <p style="text-align: left; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">A Connect 4 game generated with the help of AI.
+
+    <div id="board">
+        <!-- Add your game board here -->
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+    </div>
+
+    <script>
+        // Add your JavaScript code here
+        const board = document.getElementById('board');
+        const cells = document.getElementsByClassName('cell');
+        let currentPlayer = 'red';
+
+        // Add event listener to each cell
+        for (let i = 0; i < cells.length; i++) {
+            cells[i].addEventListener('click', function() {
+                // Check if the cell is empty
+                if (!this.classList.contains('red') && !this.classList.contains('yellow')) {
+                    // Add the current player's color to the cell
+                    this.classList.add(currentPlayer);
+
+                    // Check for a win
+                    if (checkWin()) {
+                        alert(currentPlayer + ' wins!');
+                        resetBoard();
+                        return;
+                    }
+
+                    // Switch to the next player
+                    currentPlayer = currentPlayer === 'red' ? 'yellow' : 'red';
+                }
+            });
+        }
+
+        // Function to check for a win
+        function checkWin() {
+            const winningCombinations = [
+                [0, 1, 2, 3], [1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6], // Horizontal
+                [0, 7, 14, 21], [7, 14, 21, 28], [14, 21, 28, 35], [21, 28, 35, 42], // Vertical
+                [0, 8, 16, 24], [1, 9, 17, 25], [2, 10, 18, 26], [3, 11, 19, 27], // Diagonal (top-left to bottom-right)
+                [3, 9, 15, 21], [4, 10, 16, 22], [5, 11, 17, 23], [6, 12, 18, 24] // Diagonal (top-right to bottom-left)
+            ];
+
+            for (let combination of winningCombinations) {
+                const [a, b, c, d] = combination;
+                if (cells[a].classList.contains(currentPlayer) &&
+                        cells[b].classList.contains(currentPlayer) &&
+                        cells[c].classList.contains(currentPlayer) &&
+                        cells[d].classList.contains(currentPlayer)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        // Function to reset the board
+        function resetBoard() {
+            for (let i = 0; i < cells.length; i++) {
+                cells[i].classList.remove('red', 'yellow');
+            }
+        }
+    </script>
+</body>
+</html>
